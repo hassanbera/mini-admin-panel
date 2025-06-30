@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { message } from "antd";
 
 const AuthContext = createContext();
 
@@ -33,6 +34,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    setError(null);
+    message.info("Çıkış yapıldı.");
   };
 
   return (
