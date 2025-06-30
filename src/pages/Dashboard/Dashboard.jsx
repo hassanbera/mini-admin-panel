@@ -1,0 +1,21 @@
+import { useAuth } from "../../contexts/AuthContext";
+import { Button } from "antd";
+import { dashboardContainer } from "./styles";
+
+const Dashboard = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  }
+  return (
+    <div style={dashboardContainer}>
+      <h1>Welcome, {user?.name}!</h1>
+      <p>Your role: <strong>{user?.role}</strong></p>
+      <Button type="primary" danger onClick={handleLogout}>Logout</Button>
+    </div>
+  );
+};
+
+export default Dashboard;
