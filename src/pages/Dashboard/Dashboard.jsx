@@ -1,8 +1,9 @@
+"use client";
 import { useAuth } from "../../contexts/AuthContext";
 import { Button } from "antd";
 import { dashboardContainer } from "./styles";
 import MainLayout from "../../layouts/MainLayout";
-
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
