@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@example.com",
+      "password": "123456",
+      "name": "Admin User",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "viewer@example.com",
+      "password": "654321",
+      "name": "Viewer User",
+      "role": "viewer"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Ali Veli",
+      "email": "ali.veli@example.com",
+      "phone": "+905551112233",
+      "address": "İstanbul, Türkiye"
+    },
+    {
+      "id": 2,
+      "name": "Ayşe Fatma",
+      "email": "ayse.fatma@example.com",
+      "phone": "+905554445566",
+      "address": "Ankara, Türkiye"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "orderDate": "2025-06-30",
+      "amount": 350.0,
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "customerId": 2,
+      "orderDate": "2025-06-29",
+      "amount": 150.5,
+      "status": "Completed"
+    }
+  ]
+}
