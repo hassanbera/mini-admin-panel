@@ -1,0 +1,159 @@
+/* Global Responsive Styles */
+
+/* Breakpoints:
+   - verySmall: 0-575px (mobile)
+   - small: 576-767px (large mobile)
+   - medium: 768-991px (tablet)
+   - large: 992-1199px (small desktop)
+   - veryLarge: 1200px+ (large desktop)
+*/
+
+/* Mobile First Approach */
+
+/* Very Small Devices (Mobile) */
+@media (max-width: 575px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    z-index: 1000;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  .ant-layout-content {
+    margin-left: 0 !important;
+  }
+
+  .ant-table-thead > tr > th {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .ant-btn {
+    font-size: 12px;
+    height: 28px;
+    padding: 0 8px;
+  }
+
+  .ant-card-body {
+    padding: 16px;
+  }
+
+  .ant-modal {
+    margin: 16px;
+    max-width: calc(100vw - 32px);
+  }
+
+  .ant-form-item {
+    margin-bottom: 16px;
+  }
+}
+
+/* Small Devices (Large Mobile) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    z-index: 1000;
+    height: 100vh;
+  }
+
+  .ant-table-thead > tr > th {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .ant-table-tbody > tr > td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .ant-modal {
+    margin: 24px;
+    max-width: calc(100vw - 48px);
+  }
+}
+
+/* Medium Devices (Tablet) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .ant-layout-sider {
+    position: relative !important;
+  }
+
+  .ant-table-thead > tr > th {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+
+  .ant-table-tbody > tr > td {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+
+  .ant-modal {
+    margin: 32px;
+    max-width: 720px;
+  }
+}
+
+/* Large Devices (Desktop) */
+@media (min-width: 992px) {
+  .ant-layout-sider {
+    position: relative !important;
+  }
+
+  .ant-table-thead > tr > th {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .ant-table-tbody > tr > td {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .ant-modal {
+    max-width: 800px;
+  }
+}
+
+/* Utility classes for responsive behavior */
+.hide-mobile {
+  @media (max-width: 767px) {
+    display: none !important;
+  }
+}
+
+.show-mobile-only {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.responsive-text {
+  @media (max-width: 575px) {
+    font-size: 12px;
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    font-size: 13px;
+  }
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.responsive-padding {
+  @media (max-width: 575px) {
+    padding: 8px;
+  }
+  @media (min-width: 576px) and (max-width: 767px) {
+    padding: 16px;
+  }
+  @media (min-width: 768px) {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,46 @@
+/* Theme Toggle Component Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  color: #ffffff !important;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.theme-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.theme-toggle.light {
+  color: #ffffff !important;
+}
+
+.theme-toggle.dark {
+  color: #ffffff !important;
+}
+
+.theme-toggle .anticon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .anticon {
+  transform: scale(1.1);
+}
+
+/* Animation for theme transition */
+@keyframes themeTransition {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.theme-toggle.transitioning .anticon {
+  animation: themeTransition 0.6s ease-in-out;
+}

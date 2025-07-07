@@ -53,11 +53,6 @@ const LoginForm = ({ onFinish, error, loading }) => {
         </Form.Item>
       </Form>
 
-      {/* Admin/Viewer credentials for demonstration */}
-      <div style={{ marginTop: '16px', fontSize: '14px', color: '#666', textAlign: 'center' }}>
-        <p>Admin: admin@example.com / 123456</p>
-        <p>Viewer: viewer@example.com / 654321</p>
-      </div>
     </>
   );
 };

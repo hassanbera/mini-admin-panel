@@ -1,0 +1,260 @@
+/* Dashboard Page Styles */
+.dashboard-container {
+  padding: 24px;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.dashboard-welcome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dashboard-stat-card {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-system-info {
+  border-radius: 8px;
+}
+
+.dashboard-loading {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.dashboard-stats-row {
+  margin-bottom: 16px;
+}
+
+.dashboard-system-row {
+  margin-top: 24px;
+}
+
+/* Stat Card Variants */
+.stat-card-customer {
+  color: #1890ff;
+  border-left: 4px solid #1890ff;
+}
+
+.stat-card-order {
+  color: #52c41a;
+  border-left: 4px solid #52c41a;
+}
+
+.stat-card-pending {
+  color: #faad14;
+  border-left: 4px solid #faad14;
+}
+
+.stat-card-revenue {
+  color: #f5222d;
+  border-left: 4px solid #f5222d;
+}
+
+/* Typography */
+.dashboard-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.dashboard-welcome-text {
+  font-size: 16px;
+}
+
+.stat-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.system-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.system-value {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Responsive Styles */
+
+/* Very Small Screens (≤480px) */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 8px 4px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  
+  .dashboard-welcome {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .dashboard-title {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .dashboard-welcome-text {
+    font-size: 14px;
+  }
+  
+  .stat-title {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .stat-value {
+    font-size: 18px;
+  }
+  
+  .system-title {
+    font-size: 12px;
+  }
+  
+  .system-value {
+    font-size: 14px;
+  }
+  
+  .dashboard-stat-card {
+    margin-bottom: 12px;
+  }
+  
+  .dashboard-loading {
+    padding: 30px 15px;
+  }
+}
+
+/* Mobile (481px - 575px) */
+@media (min-width: 481px) and (max-width: 575px) {
+  .dashboard-container {
+    padding: 12px 8px;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 12px;
+  }
+  
+  .dashboard-welcome {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .dashboard-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .dashboard-welcome-text {
+    font-size: 14px;
+  }
+  
+  .stat-title {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .stat-value {
+    font-size: 18px;
+  }
+  
+  .system-title {
+    font-size: 12px;
+  }
+  
+  .system-value {
+    font-size: 14px;
+  }
+  
+  .dashboard-stat-card {
+    margin-bottom: 12px;
+  }
+  
+  .dashboard-loading {
+    padding: 30px 15px;
+  }
+}
+
+/* Small Tablets (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .dashboard-container {
+    padding: 16px 12px;
+  }
+  
+  .dashboard-title {
+    font-size: 22px;
+  }
+  
+  .dashboard-welcome-text {
+    font-size: 15px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+}
+
+/* Medium Tablets (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .dashboard-container {
+    padding: 20px 16px;
+  }
+}
+
+/* Large Tablets/Desktops (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dashboard-container {
+    padding: 24px 20px;
+  }
+}
+
+/* Extra Large Screens (≥1200px) */
+@media (min-width: 1200px) {
+  .dashboard-container {
+    padding: 32px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .dashboard-container {
+    padding: 12px 16px;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 16px;
+  }
+  
+  .dashboard-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+}

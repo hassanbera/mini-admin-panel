@@ -1,0 +1,14 @@
+/* Content Styles */
+.content-container {
+  margin: 24px 16px;
+  padding: 0;
+  min-height: 280px;
+  background: white;
+  border-radius: 8px;
+}
+
+.content-inner {
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+}

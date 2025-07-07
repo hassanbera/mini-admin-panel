@@ -1,19 +1,19 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Login from "../pages/LoginPage/LoginPage";
-import Dashboard from "../pages/DashboardPage/DashboardPage";
+import Dashboard from "../pages/DashboardPage/DashboardPage"
 import Customers from "../pages/CustomersPage/CustomersPage";
 import Orders from "../pages/OrdersPage/OrdersPage";
 import PrivateRoute from "./PrivateRoute";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../layouts/MainLayout/MainLayout";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 function RouteManager(){
 return (
-<Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
+<Router> 
+        <Routes> 
+          {/* Giriş sayfası */}
+          <Route path="/login" element={<LoginPage/>} />
           
-          {/* Protected Routes with Layout */}
+          {/* Tüm sayfalara erişim için PrivateRoute kullanımı */}
           <Route
             path="/"
             element={
@@ -31,7 +31,7 @@ return (
             <Route path="orders" element={<Orders />} />
           </Route>
           
-          {/* 404 Route */}
+          {/* Geçersiz rotalar için yönlendirme */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Router>

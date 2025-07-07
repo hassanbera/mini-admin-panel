@@ -1,0 +1,208 @@
+/* Customers Page Styles */
+.customers-container {
+  padding: 24px;
+}
+
+.customers-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.customer-page-container {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customer-page-title {
+  margin: 0;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.user-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.action-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search-container {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-input {
+  max-width: 400px;
+}
+
+.customers-table {
+  background: white;
+}
+
+/* Responsive Design */
+@media (max-width: 575px) {
+  .customers-container {
+    padding: 8px;
+  }
+  
+  .customer-page-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .customer-page-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  
+  .user-container {
+    font-size: 12px;
+  }
+  
+  .action-button-container {
+    justify-content: flex-start;
+  }
+  
+  .search-input {
+    max-width: 100%;
+  }
+  
+  .customers-card {
+    margin: 0;
+    border-radius: 4px;
+  }
+  
+  .ant-space-item .ant-btn span {
+    display: none; /* Hide button text on very small screens */
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .customers-container {
+    padding: 12px;
+  }
+  
+  .customer-page-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .customer-page-title {
+    font-size: 20px;
+  }
+  
+  .action-button-container {
+    justify-content: flex-start;
+  }
+  
+  .search-input {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .customers-container {
+    padding: 16px;
+  }
+  
+  .customer-page-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .customer-page-title {
+    font-size: 22px;
+  }
+  
+  .search-input {
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+  .customers-container {
+    padding: 24px;
+  }
+  
+  .customer-page-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .customer-page-title {
+    font-size: 24px;
+  }
+  
+  .search-input {
+    max-width: 400px;
+  }
+}
+
+/* Modal responsive styles */
+.customers-modal {
+  @media (max-width: 575px) {
+    margin: 8px;
+    max-width: calc(100vw - 16px);
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    margin: 16px;
+    max-width: calc(100vw - 32px);
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    max-width: 720px;
+  }
+  
+  @media (min-width: 992px) {
+    max-width: 800px;
+  }
+}
+
+/* Table responsive adjustments */
+.customers-table .ant-table-thead > tr > th {
+  @media (max-width: 575px) {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}
+
+.customers-table .ant-table-tbody > tr > td {
+  @media (max-width: 575px) {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}

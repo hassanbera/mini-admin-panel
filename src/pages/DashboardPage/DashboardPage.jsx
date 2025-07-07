@@ -1,14 +1,14 @@
-
 import { useState, useEffect } from 'react';
 import { Row, Col, Card, Statistic, Spin, Typography, Tag } from 'antd';
 import { UserOutlined, ShoppingCartOutlined, TrophyOutlined, DollarOutlined } from '@ant-design/icons';
 import { useAuth } from '../../contexts/AuthContext';
 import { customersService } from '../../services/customersService';
 import { orderService } from '../../services/orderService';
+import './DashboardPage.css';
 
 const { Title } = Typography;
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const { userName, userRole } = useAuth();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
@@ -18,33 +18,36 @@ const Dashboard = () => {
     totalRevenue: 0
   });
 
-  const fetchStats = async () => {
-    setLoading(true);
-    try {
-      // Müşteri sayısı
-      const customers = await customersService.getAll();
-      
-      // Sipariş verileri
-      const orders = await orderService.getAll();
-      
-      // İstatistikleri hesapla
-      const pendingOrders = orders.filter(order => order.status === 'Pending').length;
-      const totalRevenue = orders.reduce((sum, order) => sum + (order.amount || 0), 0);
-
-      setStats({
-        totalCustomers: customers.length,
-        totalOrders: orders.length,
-        pendingOrders,
-        totalRevenue
-      });
-    } catch (error) {
-      console.error('İstatistikler yüklenirken hata:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch customers
+        const customers = await customersService.getAll();
+        
+        // Fetch orders
+        const orders = await orderService.getAll();
+        
+        // Calculate stats
+        const totalCustomers = customers.length;
+        const totalOrders = orders.length;
+        const pendingOrders = orders.filter(order => order.status === 'Pending').length;
+        const totalRevenue = orders.reduce((sum, order) => sum + Number(order.amount), 0);
+        
+        setStats({
+          totalCustomers,
+          totalOrders,
+          pendingOrders,
+          totalRevenue
+        });
+      } catch (error) {
+        console.error('Error fetching dashboard stats:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchStats();
   }, []);
 
@@ -52,19 +55,22 @@ const Dashboard = () => {
     {
       title: 'Toplam Müşteri',
       value: stats.totalCustomers,
-      icon: <UserOutlined style={{ color: '#1890ff' }} />,
+      icon: <UserOutlined />,
+      type: 'customer',
       color: '#1890ff'
     },
     {
       title: 'Toplam Sipariş',
       value: stats.totalOrders,
-      icon: <ShoppingCartOutlined style={{ color: '#52c41a' }} />,
+      icon: <ShoppingCartOutlined />,
+      type: 'order',
       color: '#52c41a'
     },
     {
       title: 'Bekleyen Siparişler',
       value: stats.pendingOrders,
-      icon: <TrophyOutlined style={{ color: '#faad14' }} />,
+      icon: <TrophyOutlined />,
+      type: 'pending',
       color: '#faad14'
     },
     {
@@ -72,26 +78,27 @@ const Dashboard = () => {
       value: stats.totalRevenue,
       prefix: '₺',
       precision: 2,
-      icon: <DollarOutlined style={{ color: '#f5222d' }} />,
+      icon: <DollarOutlined />,
+      type: 'revenue',
       color: '#f5222d'
     }
   ];
 
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', padding: '50px' }}>
+      <div className="dashboard-loading">
         <Spin size="large" />
       </div>
     );
   }
 
   return (
-    <div>
-      {/* Hoş geldin mesajı */}
-      <div style={{ marginBottom: 24 }}>
-        <Title level={2}>Dashboard</Title>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 16 }}>
+    <div className="dashboard-container">
+      {/* Header Section */}
+      <div className="dashboard-header">
+        <Title level={2} className="dashboard-title">Dashboard</Title>
+        <div className="dashboard-welcome">
+          <span className="dashboard-welcome-text">
             Hoş geldiniz, <strong>{userName}</strong>!
           </span>
           <Tag color={userRole === 'admin' ? 'green' : 'blue'}>
@@ -100,55 +107,56 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* İstatistik kartları */}
-      <Row gutter={[16, 16]}>
+      {/* Statistics Cards */}
+      <Row gutter={[16, 16]} className="dashboard-stats-row">
         {statCards.map((card, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
             <Card
               hoverable
-              style={{
-                borderLeft: `4px solid ${card.color}`,
-                borderRadius: 8
-              }}
+              className={`dashboard-stat-card stat-card-${card.type}`}
             >
               <Statistic
-                title={card.title}
+                title={<span className="stat-title">{card.title}</span>}
                 value={card.value}
                 prefix={card.prefix}
                 precision={card.precision}
                 valueStyle={{ color: card.color }}
                 suffix={card.icon}
+                className="stat-value"
               />
             </Card>
           </Col>
         ))}
       </Row>
 
-      {/* Ek bilgi kartı */}
-      <Row style={{ marginTop: 24 }}>
+      {/* System Information Card */}
+      <Row className="dashboard-system-row">
         <Col span={24}>
-          <Card title="Sistem Bilgileri" style={{ borderRadius: 8 }}>
+          <Card title="Sistem Bilgileri" className="dashboard-system-info">
             <Row gutter={16}>
-              <Col span={8}>
-                <Statistic
-                  title="Aktif Kullanıcı"
-                  value={userName}
-                  valueStyle={{ fontSize: 16 }}
-                />
+              <Col xs={24} sm={8}>
+                <div>
+                  <span className="system-title">Kullanıcı Rolü:</span>
+                  <div className="system-value">
+                    {userRole === 'admin' ? 'Yönetici' : 'Görüntüleyici'}
+                  </div>
+                </div>
               </Col>
-              <Col span={8}>
-                <Statistic
-                  title="Kullanıcı Rolü"
-                  value={userRole === 'admin' ? 'Yönetici' : 'Görüntüleyici'}
-                  valueStyle={{ fontSize: 16 }}
-                />
+              <Col xs={24} sm={8}>
+                <div>
+                  <span className="system-title">Son Güncelleme:</span>
+                  <div className="system-value">
+                    {new Date().toLocaleDateString('tr-TR')}
+                  </div>
+                </div>
               </Col>
-              <Col span={8}>
-                <Statistic
-                  title="Son Güncelleme"
-                  value={new Date().toLocaleDateString('tr-TR')}
-                  valueStyle={{ fontSize: 16 }}
-                />
+              <Col xs={24} sm={8}>
+                <div>
+                  <span className="system-title">Sistem Durumu:</span>
+                  <div className="system-value">
+                    <Tag color="green">Aktif</Tag>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Card>
@@ -158,4 +166,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

@@ -1,10 +1,10 @@
 import { Layout } from "antd";
-
+import './Footer.css';
 const { Footer } = Layout;
 
 const AppFooter = () => {
   return (
-    <Footer style={{ textAlign: "center" }}>
+    <Footer className="footer-container">
       Mini Admin Panel ©2025
     </Footer>
   );

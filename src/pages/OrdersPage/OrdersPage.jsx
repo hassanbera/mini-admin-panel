@@ -1,19 +1,18 @@
-// pages/Orders/Orders.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Table, Space, Modal, message, Popconfirm, Tag } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
 import OrderForm from '../../components/Forms/Orders/OrderForm';
 import { orderService } from '../../services/orderService';
-import MainLayout from '../../layouts/MainLayout';
 import { useAuth } from '../../contexts/AuthContext';
+import './OrdersPage.css';
 
-const Orders = () => {
+const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [viewMode, setViewMode] = useState(false);
-  const { canCreate, canUpdate, canDelete } = useAuth();
+  const { canCreate, canUpdate, canDelete, userName, userRole } = useAuth();
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -44,7 +43,7 @@ const Orders = () => {
 
   const handleDelete = async (id) => {
     try {
-      await orderService.remove(id);
+      await orderService.delete(id);
       message.success('Sipariş silindi');
       fetchOrders();
     } catch (err) {
@@ -56,12 +55,13 @@ const Orders = () => {
     {
       title: 'Müşteri',
       dataIndex: 'customerName',
-      key: 'customerName'
+      key: 'customerName',
     },
     {
       title: 'Tarih',
       dataIndex: 'orderDate',
-      key: 'orderDate'
+      key: 'orderDate',
+      render: (date) => new Date(date).toLocaleDateString('tr-TR')
     },
     {
       title: 'Tutar',
@@ -86,13 +86,22 @@ const Orders = () => {
       title: 'İşlemler',
       key: 'actions',
       render: (_, record) => (
-        <Space>
-          <Button icon={<EyeOutlined />} onClick={() => openModal(record, true)} />
+        <Space size="middle">
+          <Button 
+            icon={<EyeOutlined />} 
+            onClick={() => openModal(record, true)}
+          />
           {canUpdate() && (
-            <Button icon={<EditOutlined />} onClick={() => openModal(record)} />
+            <Button 
+              icon={<EditOutlined />} 
+              onClick={() => openModal(record)}
+            />
           )}
           {canDelete() && (
-            <Popconfirm title="Silmek istediğinizden emin misiniz?" onConfirm={() => handleDelete(record.id)}>
+            <Popconfirm 
+              title="Silmek istediğinizden emin misiniz?" 
+              onConfirm={() => handleDelete(record.id)}
+            >
               <Button danger icon={<DeleteOutlined />} />
             </Popconfirm>
           )}
@@ -102,23 +111,35 @@ const Orders = () => {
   ];
 
   return (
-    <MainLayout>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-        <h1>Siparişler</h1>
-        {canCreate() && (
-          <Button type="primary" icon={<PlusOutlined />} onClick={() => openModal()}>
-            Yeni Sipariş
-          </Button>
-        )}
+    <div className="orders-page-wrapper">
+      <div className="orders-container">
+        <h1 className="orders-title">Sipariş Yönetimi</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span>Kullanıcı: {userName}</span>
+          <Tag color={userRole === 'admin' ? 'green' : 'blue'}>
+            {userRole === 'admin' ? 'Yönetici' : 'Görüntüleyici'}
+          </Tag>
+          {canCreate() && (
+            <Button 
+              type="primary" 
+              icon={<PlusOutlined />} 
+              onClick={() => openModal()}
+            >
+              Yeni Sipariş
+            </Button>
+          )}
+        </div>
       </div>
 
-      <Table
-        rowKey="id"
-        columns={columns}
-        dataSource={orders}
-        loading={loading}
-        pagination={{ pageSize: 10 }}
-      />
+      <div className="orders-table-container">
+        <Table
+          rowKey="id"
+          columns={columns}
+          dataSource={orders}
+          loading={loading}
+          pagination={{ pageSize: 10 }}
+        />
+      </div>
 
       <Modal
         title={viewMode ? 'Sipariş Detayı' : selectedOrder ? 'Siparişi Düzenle' : 'Yeni Sipariş'}
@@ -126,6 +147,7 @@ const Orders = () => {
         onCancel={closeModal}
         footer={null}
         destroyOnClose
+        width={600}
       >
         <OrderForm
           order={selectedOrder}
@@ -137,8 +159,8 @@ const Orders = () => {
           onCancel={closeModal}
         />
       </Modal>
-    </MainLayout>
+    </div>
   );
 };
 
-export default Orders;
+export default OrdersPage;

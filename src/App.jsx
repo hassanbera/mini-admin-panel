@@ -1,11 +1,14 @@
-import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import RouteManager from './routes/RouteManager';
+
 function App() {
   return (
-    <AuthProvider>
-      <RouteManager/>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <RouteManager/>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

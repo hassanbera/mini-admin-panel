@@ -1,11 +1,11 @@
 import { Layout } from "antd";
-
+import './Content.css';
 const { Content } = Layout;
 
 const ContentWrapper = ({ children }) => {
   return (
-    <Content style={{ margin: "16px" }}>
-      <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
+    <Content className="content-container">
+      <div className="content-inner">
         {children}
       </div>
     </Content>
