@@ -186,45 +186,6 @@
   z-index: 10;
 }
 
-/* Light Theme Toggle */
-[data-theme="light"] .login-theme-toggle .theme-toggle {
-  color: rgba(30, 41, 59, 0.8) !important;
-  background: linear-gradient(135deg, rgba(69, 139, 253, 0.2) 0%,  rgba(169, 194, 248, 0.1) 50%, rgba(255, 255, 255, 0.8)  100%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
-  padding: 8px 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
-}
-
-[data-theme="light"] .login-theme-toggle .theme-toggle:hover {
-  color: #1e293b !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(96, 165, 250, 0.3) 100%);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  transform: translateY(-1px);
-}
-
-/* Dark Theme Toggle */
-[data-theme="dark"] .login-theme-toggle .theme-toggle {
-  color: rgba(255, 255, 255, 0.9) !important;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(30, 41, 59, 0.5) 50%, rgba(59, 130, 246, 0.6) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 8px;
-  padding: 8px 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .login-theme-toggle .theme-toggle:hover {
-  color: #ffffff !important;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(59, 130, 246, 0.7) 50%, rgba(96, 165, 250, 0.8) 100%);
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
-  transform: translateY(-1px);
-}
-
 /* Dark Theme */
 [data-theme="dark"] .login-container {
   background: linear-gradient(135deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
