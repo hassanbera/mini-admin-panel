@@ -17,20 +17,19 @@
 }
 
 .login-card {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
-    padding: 32px;
-    border: 1px solid rgba(226, 232, 240, 0.6);
-    border-radius: 0 12px 12px 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 20%, #dbeafe 60%, #f8fafc 80%, #ffffff 100%);
+  padding: 32px;
+  z-index: 99999;
+  border-radius: 0 12px 12px 0;
 }
 
 .login-header {
-    text-align: center;
-    margin-bottom: 24px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .login-title {
@@ -40,7 +39,7 @@
 }
 
 .login-subtitle {
-  color: #8c8c8c;
+  color: #2c2c2c;
   margin-bottom: 0;
   font-size: 14px;
 }
@@ -61,11 +60,15 @@
   line-height: 1.6;
 }
 
-/* Login Page Layout Classes */
+/* Layout Classes */
 .login-row {
   height: 100vh;
   width: 100vw;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
 }
 
 .login-left-col {
@@ -73,6 +76,10 @@
   align-items: stretch;
   justify-content: flex-start;
   padding: 0;
+  margin: 0;
+  flex: 1;
+  border: none;
+  outline: none;
 }
 
 .login-right-col {
@@ -81,6 +88,13 @@
   justify-content: flex-end;
   outline: none;
   user-select: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  border: none;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .login-card-fullscreen {
@@ -91,6 +105,8 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+  border: none;
+  margin: 0;
 }
 
 .login-content-wrapper {
@@ -121,46 +137,48 @@
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-  .login-container {
-    padding: 20px;
-  }
-  
-  .login-wrapper {
-    max-width: 100%;
-  }
-  
-  .login-card {
-    border-radius: 8px;
-    padding: 24px;
-  }
-  
-  .login-title {
-    font-size: 20px !important;
-  }
-  
-  .login-demo-info {
-    font-size: 11px;
-    padding: 10px;
-  }
+/* Ant Design Overrides */
+.login-row.ant-row {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
 }
 
-@media (max-width: 320px) {
-  .login-container {
-    padding: 16px;
-  }
-  
-  .login-card {
-    padding: 20px;
-  }
-  
-  .login-title {
-    font-size: 18px !important;
-  }
+.login-left-col.ant-col,
+.login-right-col.ant-col {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  outline: none !important;
 }
 
-/* Theme toggle on login page */
+.login-card.ant-card {
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.login-card.ant-card .ant-card-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Global Ant Design Fixes */
+.ant-row {
+  margin: 0 !important;
+}
+
+.ant-col {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.login-row.ant-row > .ant-col {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Theme Toggle */
 .login-theme-toggle {
   position: absolute;
   top: 20px;
@@ -168,7 +186,28 @@
   z-index: 10;
 }
 
-.login-theme-toggle .theme-toggle {
+/* Light Theme Toggle */
+[data-theme="light"] .login-theme-toggle .theme-toggle {
+  color: rgba(30, 41, 59, 0.8) !important;
+  background: linear-gradient(135deg, rgba(69, 139, 253, 0.2) 0%,  rgba(169, 194, 248, 0.1) 50%, rgba(255, 255, 255, 0.8)  100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="light"] .login-theme-toggle .theme-toggle:hover {
+  color: #1e293b !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(96, 165, 250, 0.3) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Dark Theme Toggle */
+[data-theme="dark"] .login-theme-toggle .theme-toggle {
   color: rgba(255, 255, 255, 0.9) !important;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(30, 41, 59, 0.5) 50%, rgba(59, 130, 246, 0.6) 100%);
   border: 1px solid rgba(59, 130, 246, 0.3);
@@ -178,7 +217,7 @@
   transition: all 0.3s ease;
 }
 
-.login-theme-toggle .theme-toggle:hover {
+[data-theme="dark"] .login-theme-toggle .theme-toggle:hover {
   color: #ffffff !important;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(59, 130, 246, 0.7) 50%, rgba(96, 165, 250, 0.8) 100%);
   border-color: rgba(59, 130, 246, 0.5);
@@ -186,16 +225,14 @@
   transform: translateY(-1px);
 }
 
-/* Dark theme support for login page */
+/* Dark Theme */
 [data-theme="dark"] .login-container {
   background: linear-gradient(135deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
 }
 
 [data-theme="light"] .login-container {
-  background: linear-gradient(135deg, #ffffff 0%, #dbeafe 30%, #3b82f6 70%, #1d4ed8 100%);
+  background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 20%, #dbeafe 60%, #f8fafc 80%, #ffffff 100%);
 }
-
-
 
 [data-theme="dark"] .login-title {
   color: #ffffff !important;
@@ -213,7 +250,6 @@
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
-/* Dark theme styling for login card */
 [data-theme="dark"] .login-card {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(30, 41, 59, 0.8) 100%);
   border: 1px solid rgba(59, 130, 246, 0.3);
@@ -227,9 +263,9 @@
   backdrop-filter: blur(20px);
 }
 
-/* Login form button styling */
+/* Form Buttons */
 [data-theme="dark"] .login-card .ant-btn-primary {
-  background: linear-gradient(135deg,  #3b82f6);
+  background: linear-gradient(135deg, #3b82f6);
   border: none;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
   transition: all 0.3s ease;
@@ -249,7 +285,6 @@
   color: #ffffff;
 }
 
-/* Login form button styling for light theme */
 [data-theme="light"] .login-card .ant-btn-primary {
   background: linear-gradient(135deg, #3b82f6 0%);
   border: none;
@@ -259,7 +294,7 @@
 }
 
 [data-theme="light"] .login-card .ant-btn-primary:hover {
-  background: linear-gradient(135deg,#2563eb);
+  background: linear-gradient(135deg, #2563eb);
   box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
   transform: translateY(-1px);
   color: #ffffff;
@@ -271,7 +306,7 @@
   color: #1e293b;
 }
 
-/* Input field styling for dark theme */
+/* Form Inputs */
 [data-theme="dark"] .login-card .ant-input,
 [data-theme="dark"] .login-card .ant-input-password {
   background: rgba(0, 0, 0, 0.7) !important;
@@ -305,30 +340,65 @@
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Form labels styling for dark theme */
-[data-theme="dark"] .login-card .ant-form-item-label > label {
-  color: #cbd5e1 !important;
-  font-weight: 500;
+/* Light Theme Form Inputs */
+[data-theme="light"] .login-card .ant-input,
+[data-theme="light"] .login-card .ant-input-password {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
+  color: #1e293b !important;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-[data-theme="dark"] .login-card .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
-  color: #f87171 !important;
+[data-theme="light"] .login-card .ant-input:hover,
+[data-theme="light"] .login-card .ant-input-password:hover {
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1) !important;
 }
 
-/* Input prefix icons styling */
-[data-theme="dark"] .login-card .ant-input-prefix {
-  color: rgba(255, 255, 255, 0.6) !important;
+[data-theme="light"] .login-card .ant-input:focus,
+[data-theme="light"] .login-card .ant-input-password:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
 }
 
-[data-theme="dark"] .login-card .ant-input-password-icon {
-  color: rgba(255, 255, 255, 0.6) !important;
+[data-theme="light"] .login-card .ant-input-password .ant-input {
+  background: transparent !important;
+  border: none !important;
+  color: #1e293b !important;
 }
 
-[data-theme="dark"] .login-card .ant-input-password-icon:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
+[data-theme="light"] .login-card .ant-input::placeholder,
+[data-theme="light"] .login-card .ant-input-password .ant-input::placeholder {
+  color: rgba(30, 41, 59, 0.5) !important;
 }
 
-/* Remove focus rings and selection effects from iframe */
+/* Light Theme Form Labels */
+[data-theme="light"] .login-card .ant-form-item-label > label {
+  color: #1e293b !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .login-card .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  color: #dc2626 !important;
+}
+
+[data-theme="light"] .login-card .ant-input-prefix {
+  color: rgba(30, 41, 59, 0.6) !important;
+}
+
+[data-theme="light"] .login-card .ant-input-password-icon {
+  color: rgba(30, 41, 59, 0.6) !important;
+}
+
+[data-theme="light"] .login-card .ant-input-password-icon:hover {
+  color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Iframe Styling */
 iframe {
   outline: none !important;
   border: none !important;
@@ -339,6 +409,8 @@ iframe {
   -ms-user-select: none !important;
   -webkit-touch-callout: none !important;
   -webkit-tap-highlight-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 iframe:focus,
@@ -348,13 +420,14 @@ iframe:active {
   box-shadow: none !important;
 }
 
-/* Remove focus from iframe container */
 .ant-col iframe {
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Remove any blue selection highlight */
+/* General Focus Fixes */
 *:focus {
   outline: none !important;
 }
@@ -363,3 +436,49 @@ iframe:active {
   border: 0 !important;
 }
 
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+  }
+  
+  .login-wrapper {
+    max-width: 100%;
+  }
+  
+  .login-card {
+    border-radius: 8px;
+    padding: 24px;
+  }
+  
+  .login-title {
+    font-size: 20px !important;
+  }
+  
+  .login-demo-info {
+    font-size: 11px;
+    padding: 10px;
+  }
+  
+  .login-row {
+    flex-direction: column;
+  }
+  
+  .login-right-col {
+    display: none;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-container {
+    padding: 16px;
+  }
+  
+  .login-card {
+    padding: 20px;
+  }
+  
+  .login-title {
+    font-size: 18px !important;
+  }
+}

@@ -257,12 +257,10 @@ const CustomersPage = () => {
             <h2 className="customer-page-title">
               Müşteri Yönetimi
             </h2>
-            <div className="user-container">
               <span>Kullanıcı: {userName}</span>
               <Tag color={userRole === 'admin' ? 'green' : 'blue'}>
                 {userRole === 'admin' ? 'Yönetici' : 'Görüntüleyici'}
               </Tag>
-            </div>
           </div>
           
           <div className="action-button-container">
