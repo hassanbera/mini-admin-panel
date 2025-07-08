@@ -1,0 +1,110 @@
+/* Theme Toggle Component Styles - Global */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 8px 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Light Theme Global Styling */
+[data-theme="light"] .theme-toggle {
+  color: rgba(30, 41, 59, 0.8) !important;
+  background: linear-gradient(135deg, rgba(69, 139, 253, 0.2) 0%, rgba(169, 194, 248, 0.1) 50%, rgba(255, 255, 255, 0.8) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  color: #1e293b !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(96, 165, 250, 0.3) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .theme-toggle:focus {
+  color: #1e293b !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(96, 165, 250, 0.3) 100%);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Dark Theme Global Styling */
+[data-theme="dark"] .theme-toggle {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(30, 41, 59, 0.5) 50%, rgba(59, 130, 246, 0.6) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(59, 130, 246, 0.7) 50%, rgba(96, 165, 250, 0.8) 100%);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .theme-toggle:focus {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(59, 130, 246, 0.7) 50%, rgba(96, 165, 250, 0.8) 100%);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+}
+
+/* Icon Styling */
+.theme-toggle .anticon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .anticon {
+  transform: scale(1.1);
+}
+
+/* Animation for theme transition */
+@keyframes themeTransition {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.theme-toggle.transitioning .anticon {
+  animation: themeTransition 0.6s ease-in-out;
+}
+
+/* Size Variants */
+.theme-toggle.small {
+  padding: 6px 8px;
+}
+
+.theme-toggle.small .anticon {
+  font-size: 14px;
+}
+
+.theme-toggle.large {
+  padding: 10px 16px;
+}
+
+.theme-toggle.large .anticon {
+  font-size: 18px;
+}
+
+/* Active/Pressed State */
+.theme-toggle:active {
+  transform: translateY(0) !important;
+  transition: transform 0.1s ease;
+}
+
+[data-theme="light"] .theme-toggle:active {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle:active {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}

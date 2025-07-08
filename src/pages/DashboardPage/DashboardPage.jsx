@@ -110,7 +110,7 @@ const DashboardPage = () => {
       {/* Statistics Cards */}
       <Row gutter={[16, 16]} className="dashboard-stats-row">
         {statCards.map((card, index) => (
-          <Col xs={24} sm={12} lg={6} key={index}>
+          <Col xs={24} sm={12} lg={6} key={index} >
             <Card
               hoverable
               className={`dashboard-stat-card stat-card-${card.type}`}

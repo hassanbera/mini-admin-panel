@@ -53,7 +53,7 @@ const LoginPage = () => {
           <Card className="login-card login-card-fullscreen">
             <div className="login-content-wrapper">
               <div className="login-header login-header-spacing">
-                <Title level={2} className="login-title login-title-spacing">
+                <Title level={2} className="login-title">
                   Mini Admin Panel
                 </Title>
                 <p className="login-subtitle login-subtitle-spacing">

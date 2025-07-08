@@ -2,13 +2,8 @@
 .orders-page-wrapper {
   padding: 24px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 30%, #e2e8f0 100%);
+  background: var(--gradient-bg);
   transition: all 0.3s ease;
-}
-
-/* Dark theme for orders page wrapper */
-[data-theme="dark"] .orders-page-wrapper {
-  background: linear-gradient(135deg, #000000 0%, #0f172a 30%, #1e293b 70%, #334155 100%);
 }
 
 .orders-container {
@@ -17,65 +12,38 @@
   align-items: center;
   margin-bottom: 24px;
   padding: 24px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
-  border: 1px solid rgba(226, 232, 240, 0.6);
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
 }
 
 .orders-container:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* Dark theme for orders container */
-[data-theme="dark"] .orders-container {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(30, 41, 59, 0.8) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .orders-container:hover {
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 6px 16px var(--shadow);
 }
 
 .orders-title {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: #1e293b;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] .orders-title {
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+  text-shadow: 0 1px 2px var(--shadow);
 }
 
 .orders-table-container {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
-  border: 1px solid rgba(226, 232, 240, 0.6);
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
 }
 
 .orders-table-container:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-/* Dark theme for orders table container */
-[data-theme="dark"] .orders-table-container {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(30, 41, 59, 0.8) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .orders-table-container:hover {
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 6px 16px var(--shadow);
 }
 
 /* Orders user info styling */
@@ -83,63 +51,38 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #64748b;
+  color: var(--text-secondary);
   flex-wrap: wrap;
-}
-
-[data-theme="dark"] .orders-user-info {
-  color: #cbd5e1;
 }
 
 /* Orders action button styling */
 .orders-action-button .ant-btn-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--primary-gradient);
   border: none;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
 }
 
 .orders-action-button .ant-btn-primary:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  background: var(--primary-gradient);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px var(--shadow);
   transform: translateY(-1px);
-}
-
-[data-theme="dark"] .orders-action-button .ant-btn-primary {
-  background: linear-gradient(135deg, #000000 0%, #1e293b 30%, #3b82f6 100%);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
-  color: #ffffff;
-}
-
-[data-theme="dark"] .orders-action-button .ant-btn-primary:hover {
-  background: linear-gradient(135deg, #0f172a 0%, #3b82f6 50%, #60a5fa 100%);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.7);
 }
 
 /* Orders table styling */
 .orders-table-container .ant-table {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--bg-primary);
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(226, 232, 240, 0.5);
-}
-
-[data-theme="dark"] .orders-table-container .ant-table {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid var(--border-color);
 }
 
 .orders-table-container .ant-table-thead > tr > th {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  color: #1e293b;
+  background: var(--secondary-background);
+  color: var(--text-color);
   font-weight: 600;
-  border-bottom: 2px solid rgba(59, 130, 246, 0.1);
-}
-
-[data-theme="dark"] .orders-table-container .ant-table-thead > tr > th {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-  color: #ffffff;
-  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  border-bottom: 2px solid var(--border-accent);
 }
 
 .orders-table-container .ant-table-tbody > tr {
@@ -147,24 +90,14 @@
 }
 
 .orders-table-container .ant-table-tbody > tr:hover {
-  background: rgba(59, 130, 246, 0.05) !important;
+  background: rgba(var(--primary-color), 0.05) !important;
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
-}
-
-[data-theme="dark"] .orders-table-container .ant-table-tbody > tr:hover {
-  background: rgba(59, 130, 246, 0.1) !important;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .orders-table-container .ant-table-tbody > tr > td {
-  color: #475569;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-}
-
-[data-theme="dark"] .orders-table-container .ant-table-tbody > tr > td {
-  color: #cbd5e1;
-  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Action buttons in orders table */
@@ -174,38 +107,29 @@
 }
 
 .orders-table-container .ant-btn-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: var(--primary-gradient);
   border: none;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .orders-table-container .ant-btn-primary:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  background: var(--primary-gradient);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px var(--shadow);
   transform: translateY(-1px);
 }
 
 .orders-table-container .ant-btn-default {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  color: #3b82f6;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  color: var(--primary-color);
 }
 
 .orders-table-container .ant-btn-default:hover {
-  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: var(--bg-secondary);
+  filter: brightness(0.95);
+  border-color: var(--primary-color);
   transform: translateY(-1px);
-}
-
-[data-theme="dark"] .orders-table-container .ant-btn-default {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
-}
-
-[data-theme="dark"] .orders-table-container .ant-btn-default:hover {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.9) 100%);
-  border-color: rgba(59, 130, 246, 0.5);
 }
 
 .orders-table-container .ant-btn-dangerous {
@@ -225,18 +149,18 @@
   border-radius: 12px;
 }
 
-[data-theme="dark"] .orders-modal .ant-modal-content {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(30, 41, 59, 0.9) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+.orders-modal .ant-modal-content {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
 }
 
-[data-theme="dark"] .orders-modal .ant-modal-header {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+.orders-modal .ant-modal-header {
+  background: var(--secondary-background);
+  border-bottom: 1px solid var(--border-color);
 }
 
-[data-theme="dark"] .orders-modal .ant-modal-title {
-  color: #ffffff;
+.orders-modal .ant-modal-title {
+  color: var(--text-color);
 }
 
 /* Header section styling */

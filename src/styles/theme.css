@@ -3,11 +3,12 @@
 /* Light Theme Variables */
 [data-theme="light"] {
   --primary-color: #3b82f6;
-  --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  --primary-hover: #2563eb;
+  --primary-gradient: linear-gradient(135deg,#60a5fa 0%,#3b82f6   100%);
   --background-color: #ffffff;
   --secondary-background: #f8fafc;
-  --text-color: #1e293b;
-  --text-secondary: #64748b;
+  --text-color: #000000;
+  --text-secondary: #1e293b;
   --border-color: #e2e8f0;
   --border-accent: rgba(79, 70, 229, 0.2);
   --shadow: rgba(79, 70, 229, 0.1);
@@ -15,16 +16,22 @@
   --sidebar-background: linear-gradient(180deg, #4f46e5 0%, #3b82f6 100%);
   --header-background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
   --footer-background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+  
+  /* Additional variables for modular theming */
+  --bg-primary: rgba(255, 255, 255, 0.8);
+  --bg-secondary: rgba(248, 250, 252, 0.9);
+  --gradient-bg: linear-gradient(180deg, #3b82f6 0%, #60a5fa 20%, #dbeafe 60%, #f8fafc 80%, #ffffff 100%);
 }
 
 /* Dark Theme Variables */
 [data-theme="dark"] {
   --primary-color: #3b82f6;
-  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --primary-hover: #60a5fa;
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #0f172a 100%);
   --background-color: #0f172a;
   --secondary-background: #1e293b;
-  --text-color: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --text-color: #ffffff;
+  --text-secondary: #c9def8;
   --border-color: rgba(255, 255, 255, 0.1);
   --border-accent: rgba(59, 130, 246, 0.2);
   --shadow: rgba(0, 0, 0, 0.25);
@@ -32,6 +39,11 @@
   --sidebar-background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
   --header-background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   --footer-background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  
+  /* Additional variables for modular theming */
+  --bg-primary: rgba(0, 0, 0, 0.7);
+  --bg-secondary: rgba(15, 23, 42, 0.8);
+  --gradient-bg: linear-gradient(180deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
 }
 
 /* Global Theme Application */
@@ -39,29 +51,45 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Card Theme Support */
-[data-theme="dark"] .ant-card {
-  background-color: var(--card-background);
-  border-color: var(--border-color);
+/* Body background for themes - using CSS variables */
+[data-theme="light"] body {
+  background: var(--gradient-bg);
+  color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-card-body {
+[data-theme="dark"] body {
+  background: var(--gradient-bg);
+  color: var(--text-color);
+}
+
+/* ==========================================================================
+   ANT DESIGN COMPONENT THEMING
+   ========================================================================== */
+
+/* Card Theme Support */
+.ant-card {
+  background-color: var(--card-background);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.ant-card-body {
   color: var(--text-color);
 }
 
 /* Table Theme Support */
-[data-theme="dark"] .ant-table {
+.ant-table {
   background-color: var(--card-background);
   color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-table-thead > tr > th {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+.ant-table-thead > tr > th {
+  background-color: var(--secondary-background);
   border-color: var(--border-color);
   color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-table-tbody > tr > td {
+.ant-table-tbody > tr > td {
   border-color: var(--border-color);
   color: var(--text-color);
 }
@@ -70,75 +98,70 @@ body {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
 }
 
+[data-theme="light"] .ant-table-tbody > tr:hover > td {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
 /* Modal Theme Support */
-[data-theme="dark"] .ant-modal-content {
+.ant-modal-content {
   background-color: var(--card-background);
   color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-modal-header {
+.ant-modal-header {
   background-color: var(--card-background);
   border-color: var(--border-color);
 }
 
-[data-theme="dark"] .ant-modal-title {
+.ant-modal-title {
   color: var(--text-color);
 }
 
 /* Form Theme Support */
-[data-theme="dark"] .ant-form-item-label > label {
+.ant-form-item-label > label {
   color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-input {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+.ant-input {
+  background-color: var(--card-background);
   border-color: var(--border-color);
   color: var(--text-color);
 }
 
-[data-theme="dark"] .ant-input:hover {
+.ant-input:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 1px var(--border-accent);
 }
 
-[data-theme="dark"] .ant-input:focus {
+.ant-input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 2px var(--border-accent);
 }
 
 /* Select Theme Support */
-[data-theme="dark"] .ant-select-selector {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%) !important;
+.ant-select-selector {
+  background-color: var(--card-background) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
 
-[data-theme="dark"] .ant-select-dropdown {
+.ant-select-dropdown {
   background-color: var(--card-background);
   border-color: var(--border-color);
 }
 
-/* Typography Theme Support */
-[data-theme="dark"] .ant-typography {
-  color: var(--text-color);
-}
-
-[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
-[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
-  color: var(--text-color);
-}
 
 /* Statistic Theme Support */
-[data-theme="dark"] .ant-statistic-title {
+.ant-statistic-title {
   color: var(--text-secondary);
 }
 
-[data-theme="dark"] .ant-statistic-content {
+.ant-statistic-content {
   color: var(--text-color);
 }
 
 /* Tag Theme Support */
-[data-theme="dark"] .ant-tag {
+.ant-tag {
   border-color: var(--border-color);
 }
 

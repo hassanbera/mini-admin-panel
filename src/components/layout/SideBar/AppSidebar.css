@@ -1,4 +1,4 @@
-/* Sidebar Styles */
+/* Sidebar Styles - Using Theme Variables */
 .app-sidebar {
   position: fixed !important;
   top: 0 !important;
@@ -8,11 +8,16 @@
   max-height: 100vh !important;
   min-height: 100vh !important;
   z-index: 1000;
-  background-color: #001529;
-  border-right: 1px solid #f0f0f0;
+  background: var(--gradient-bg);
+  border-right: 1px solid var(--border-color);
   transition: all 0.3s ease;
   overflow-y: auto;
   overflow-x: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    2px 0 20px var(--bg-primary),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Mobile Styles */
@@ -57,15 +62,21 @@
 
 .sidebar-logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--bg-secondary);
   margin: 16px;
   padding: 8px;
   text-align: center;
-  color: white;
+  color: var(--text-color);
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 14px;
   line-height: 16px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 
+    0 8px 25px var(--shadow),
+    inset 0 1px 0 var(--border-color);
 }
 
 .sidebar-menu {
@@ -74,6 +85,38 @@
   height: calc(100vh - 64px); /* Account for logo space */
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* Menu items using theme variables */
+.sidebar-menu .ant-menu-item {
+  color: var(--text-secondary);
+  border-radius: 12px;
+  margin: 6px 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-menu .ant-menu-item:hover {
+  color: var(--text-color);
+  background: var(--bg-secondary);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transform: translateX(6px);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 8px 25px var(--primary-color);
+}
+
+.sidebar-menu .ant-menu-item-selected {
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--primary-color);
+  box-shadow: 
+    0 8px 25px var(--primary-color),
+    inset 0 1px 0 var(--border-color);
 }
 
 /* Ensure sidebar scrolls properly and stays in viewport */
@@ -96,16 +139,16 @@
 }
 
 .app-sidebar .ant-menu::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-color);
 }
 
 .app-sidebar .ant-menu::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--text-secondary);
   border-radius: 2px;
 }
 
 .app-sidebar .ant-menu::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--text-color);
 }
 
 /* Responsive adjustments for menu items */
@@ -140,141 +183,4 @@
   .main-layout-content {
     margin-left: 200px;
   }
-}
-
-/* Theme support for sidebar - Glassmorphism */
-[data-theme="dark"] .app-sidebar {
-  background: linear-gradient(135deg, 
-    rgba(0, 0, 0, 0.4) 0%, 
-    rgba(15, 23, 42, 0.6) 30%, 
-    rgba(30, 41, 59, 0.7) 70%, 
-    rgba(59, 130, 246, 0.8) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 
-    2px 0 20px rgba(0, 0, 0, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="light"] .app-sidebar {
-  background: linear-gradient(180deg, 
-    rgba(59, 130, 246, 0.85) 0%, 
-    rgba(96, 165, 250, 0.8) 20%, 
-    rgba(219, 234, 254, 0.7) 60%, 
-    rgba(248, 250, 252, 0.6) 80%, 
-    rgba(255, 255, 255, 0.5) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    2px 0 20px rgba(59, 130, 246, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-/* Sidebar menu theme support for light - Glassmorphism */
-[data-theme="light"] .sidebar-menu {
-  background-color: transparent;
-}
-
-[data-theme="light"] .sidebar-menu .ant-menu-item {
-  color: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  margin: 6px 6px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="light"] .sidebar-menu .ant-menu-item:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transform: translateX(6px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-}
-
-[data-theme="light"] .sidebar-menu .ant-menu-item-selected {
-  background: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 8px 25px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-[data-theme="light"] .sidebar-logo {
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 8px;
-  box-shadow: 
-    0 8px 25px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Sidebar menu theme support for dark - Glassmorphism */
-[data-theme="dark"] .sidebar-menu {
-  background-color: transparent;
-}
-
-[data-theme="dark"] .sidebar-menu .ant-menu-item {
-  color: #e2e8f0;
-  border-radius: 12px;
-  margin: 6px 6px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-[data-theme="dark"] .sidebar-menu .ant-menu-item:hover {
-  color: #ffffff;
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.3) 0%, 
-    rgba(99, 102, 241, 0.25) 100%
-  );
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transform: translateX(6px);
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
-}
-
-[data-theme="dark"] .sidebar-menu .ant-menu-item-selected {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.4) 0%, 
-    rgba(99, 102, 241, 0.35) 100%
-  );
-  color: #ffffff;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(59, 130, 246, 0.5);
-  box-shadow: 
-    0 8px 25px rgba(59, 130, 246, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .sidebar-logo {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.25) 0%, 
-    rgba(99, 102, 241, 0.2) 100%
-  );
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: white;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 8px;
-  box-shadow: 
-    0 8px 25px rgba(59, 130, 246, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }

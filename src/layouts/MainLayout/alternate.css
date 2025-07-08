@@ -7,12 +7,11 @@
 .main-layout-content {
   padding: 0;
   margin: 0;
-  background: var(--gradient-bg);
+  background-color: #f5f5f5;
   flex: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: var(--text-color);
 }
 
 /* Responsive adjustments for sidebar offset */
@@ -26,4 +25,15 @@
   .main-layout-content {
     margin-left: 0;
   }
+}
+
+/* Dark theme support for main layout */
+[data-theme="dark"] .main-layout-content {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  color: var(--text-color);
+}
+
+[data-theme="light"] .main-layout-content {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+  color: #1e293b;
 }

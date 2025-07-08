@@ -36,6 +36,8 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('theme', theme);
   };
 
+  // Removed setTheme function - not used anywhere
+
   // Listen for system theme changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -53,74 +55,21 @@ export const ThemeProvider = ({ children }) => {
   // Apply theme to document body
   useEffect(() => {
     document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    document.body.style.backgroundColor = isDarkMode ? '#141414' : '#f5f5f5';
-    document.body.style.color = isDarkMode ? '#ffffff' : '#000000';
   }, [isDarkMode]);
 
-  // Ant Design theme configuration
+  // Ant Design theme configuration - using minimal overrides, let CSS handle most styling
   const antdTheme = {
     algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
     token: {
-      colorPrimary: '#1890ff',
-      borderRadius: 6,
-      ...(isDarkMode ? {
-        colorBgContainer: '#1f1f1f',
-        colorBgElevated: '#262626',
-        colorBgLayout: '#141414',
-        colorBorder: '#434343',
-        colorText: '#ffffff',
-        colorTextSecondary: '#a6a6a6',
-      } : {
-        colorBgContainer: '#ffffff',
-        colorBgElevated: '#ffffff',
-        colorBgLayout: '#f5f5f5',
-        colorBorder: '#d9d9d9',
-        colorText: '#000000',
-        colorTextSecondary: '#666666',
-      })
-    },
-    components: {
-      Layout: {
-        ...(isDarkMode ? {
-          siderBg: '#001529',
-          headerBg: '#001529',
-          bodyBg: '#141414',
-          footerBg: '#001529',
-        } : {
-          siderBg: '#001529',
-          headerBg: '#001529', 
-          bodyBg: '#f5f5f5',
-          footerBg: '#001529',
-        })
-      },
-      Menu: {
-        ...(isDarkMode ? {
-          darkItemBg: '#001529',
-          darkItemSelectedBg: '#1890ff',
-          darkItemHoverBg: '#112545',
-        } : {})
-      },
-      Card: {
-        ...(isDarkMode ? {
-          colorBgContainer: '#1f1f1f',
-          colorBorder: '#434343',
-        } : {})
-      },
-      Table: {
-        ...(isDarkMode ? {
-          colorBgContainer: '#1f1f1f',
-          colorBorder: '#434343',
-          headerBg: '#262626',
-        } : {})
-      }
+      colorPrimary: '#3b82f6', // Match your glassmorphism blue
+      borderRadius: 8, // Consistent with your components
     }
   };
-
   const value = {
     isDarkMode,
     theme: isDarkMode ? 'dark' : 'light',
     toggleTheme,
-    setTheme,
+    setTheme, // Restored - provides better API flexibility
   };
 
   return (
