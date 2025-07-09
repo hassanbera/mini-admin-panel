@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useState, useEffect } from "react";
@@ -8,6 +8,8 @@ import {
   UserOutlined,
   ShoppingCartOutlined,
   LogoutOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -19,17 +21,23 @@ const AppSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if device is mobile
+  // Check if device is mobile and set initial state
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 992); // lg breakpoint
+      const mobile = window.innerWidth < 992; // lg breakpoint
+      setIsMobile(mobile);
+      
+      // Set initial collapsed state only when device type changes
+      if (mobile !== isMobile) {
+        setCollapsed(mobile); // Start collapsed on mobile, expanded on desktop
+      }
     };
 
     checkIsMobile();
     window.addEventListener('resize', checkIsMobile);
 
     return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
+  }, [isMobile]);
 
   const handleMenuClick = ({ key }) => {
     if (key === "logout") {
@@ -41,7 +49,10 @@ const AppSidebar = () => {
   };
 
   const handleCollapse = (collapsed) => {
-    setCollapsed(collapsed);
+    // Only auto-collapse on mobile, don't auto-expand on desktop
+    if (isMobile || !collapsed) {
+      setCollapsed(collapsed);
+    }
   };
 
   const menuItems = [
@@ -61,15 +72,27 @@ const AppSidebar = () => {
         />
       )}
       
+      {/* Sidebar toggle button - only shown on mobile */}
+      {isMobile && (
+        <Button
+          type="text"
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={() => setCollapsed(!collapsed)}
+          className={`sidebar-toggle-btn ${collapsed ? 'sidebar-collapsed' : ''}`}
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        />
+      )}
+      
       <Sider 
-        breakpoint="lg" 
-        collapsedWidth="0"
+        breakpoint={isMobile ? "lg" : undefined}
+        collapsedWidth={isMobile ? "0" : "80"} 
         collapsed={collapsed}
         onCollapse={handleCollapse}
         className={`app-sidebar ${isMobile ? 'mobile' : 'desktop'}`}
+        trigger={null} 
       >
         <div className="sidebar-logo">
-          Mini Admin
+          {!collapsed ? "Mini Admin" : "MA"}
         </div>
         <Menu
           theme="dark"

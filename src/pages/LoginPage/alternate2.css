@@ -314,99 +314,48 @@ iframe:active {
 }
 
 /* Responsive Design */
-@media (max-width: 991px) {
-  .login-right-col {
-    display: none !important;
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
   }
-  
-  .login-left-col {
-    flex: 1;
-    width: 100%;
-  }
-  
-  .login-card-fullscreen {
-    border-radius: 0;
-  }
-
-  .login-theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 100000;
-  }
-}
-
-@media (max-width: 768px) {
   
   .login-wrapper {
     max-width: 100%;
   }
   
-  .login-title {
-    font-size: 24px !important;
-  }
-  
-  .login-demo-info {
-    font-size: 13px;
-    padding: 10px;
-  }
-  
-  .login-demo-info-compact {
-    font-size: 13px;
-  }
-
-  .login-theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 100000;
-  }
-}
-
-@media (max-width: 480px) {
-  
-  .login-title {
-    font-size: 22px !important;
-  }
-  
-  .login-demo-info {
-    font-size: 12px;
-    padding: 8px;
-  }
-  
-  .login-demo-info-compact {
-    font-size: 12px;
-  }
-  
-  .login-theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 100000;
-  }
-}
-
-@media (max-width: 320px) {
-  .login-container {
-    padding: 8px;
-  }
-  
-  .login-card-fullscreen {
-    padding: 16px;
+  .login-card {
+    border-radius: 8px;
+    padding: 24px;
   }
   
   .login-title {
     font-size: 20px !important;
   }
   
-  .login-demo-info-compact {
+  .login-demo-info {
     font-size: 11px;
+    padding: 10px;
   }
+  
+  .login-row {
+    flex-direction: column;
+  }
+  
+  .login-right-col {
+    display: none;
+  }
+}
 
-  .login-theme-toggle {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 100000;
+@media (max-width: 320px) {
+  .login-container {
+    padding: 16px;
+  }
+  
+  .login-card {
+    padding: 20px;
+  }
+  
+  .login-title {
+    font-size: 18px !important;
   }
 }

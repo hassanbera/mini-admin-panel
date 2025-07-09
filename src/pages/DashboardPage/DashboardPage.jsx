@@ -108,26 +108,28 @@ const DashboardPage = () => {
       </div>
 
       {/* Statistics Cards */}
-      <Row gutter={[16, 16]} className="dashboard-stats-row">
-        {statCards.map((card, index) => (
-          <Col xs={24} sm={12} lg={6} key={index} >
-            <Card
-              hoverable
-              className={`dashboard-stat-card stat-card-${card.type}`}
-            >
-              <Statistic
-                title={<span className="stat-title">{card.title}</span>}
-                value={card.value}
-                prefix={card.prefix}
-                precision={card.precision}
-                valueStyle={{ color: card.color }}
-                suffix={card.icon}
-                className="stat-value"
-              />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      <Row className="dashboard-stats-row">
+  {statCards.map((card, index) => (
+    <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6} key={index}>
+      <div className="stat-card-wrapper">
+        <Card
+          hoverable
+          className={`dashboard-stat-card stat-card-${card.type}`}
+        >
+          <Statistic
+            title={<span className="stat-title">{card.title}</span>}
+            value={card.value}
+            prefix={card.prefix}
+            precision={card.precision}
+            valueStyle={{ color: card.color }}
+            suffix={card.icon}
+            className="stat-value"
+          />
+        </Card>
+      </div>
+    </Col>
+  ))}
+</Row>
 
       {/* System Information Card */}
       <Row className="dashboard-system-row">

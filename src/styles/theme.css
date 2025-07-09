@@ -3,19 +3,20 @@
 /* Light Theme Variables */
 [data-theme="light"] {
   --primary-color: #3b82f6;
-  --primary-hover: #2563eb;
-  --primary-gradient: linear-gradient(135deg,#60a5fa 0%,#3b82f6   100%);
+  --primary-hover: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  --primary-gradient: linear-gradient(135deg,#60a5fa 0%, #3b82f6   100%);
   --background-color: #ffffff;
   --secondary-background: #f8fafc;
   --text-color: #000000;
+  --button-text-color: #ffffff;
   --text-secondary: #1e293b;
   --border-color: #e2e8f0;
   --border-accent: rgba(79, 70, 229, 0.2);
   --shadow: rgba(79, 70, 229, 0.1);
   --card-background: #ffffff;
-  --sidebar-background: linear-gradient(180deg, #4f46e5 0%, #3b82f6 100%);
-  --header-background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
-  --footer-background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+  --sidebar-background: linear-gradient(180deg, #1e40af 0%, #3b82f6 20%, #60a5fa 60%, #93c5fd 80%, #dbeafe 100%);
+  --header-background: linear-gradient(45deg, #1e40af 0%, #3b82f6 20%, #60a5fa 60%, #93c5fd 80%, #dbeafe 100%);
+  --footer-background: linear-gradient(180deg, #1e40af 0%, #3b82f6 20%, #60a5fa 60%, #93c5fd 80%, #dbeafe 100%);
   
   /* Additional variables for modular theming */
   --bg-primary: rgba(255, 255, 255, 0.8);
@@ -26,19 +27,20 @@
 /* Dark Theme Variables */
 [data-theme="dark"] {
   --primary-color: #3b82f6;
-  --primary-hover: #60a5fa;
+  --primary-hover: linear-gradient(135deg, #0f172a 0%, #3b82f6 100%) !important;
   --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #0f172a 100%);
   --background-color: #0f172a;
   --secondary-background: #1e293b;
   --text-color: #ffffff;
+  --button-text-color: #ffffff;
   --text-secondary: #c9def8;
   --border-color: rgba(255, 255, 255, 0.1);
   --border-accent: rgba(59, 130, 246, 0.2);
   --shadow: rgba(0, 0, 0, 0.25);
   --card-background: rgba(15, 23, 42, 0.95);
-  --sidebar-background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-  --header-background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  --footer-background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --sidebar-background: linear-gradient(180deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
+  --header-background: linear-gradient(45deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
+  --footer-background: linear-gradient(180deg, #000000 0%, #0f172a 30%, #1e293b 70%, #3b82f6 100%);
   
   /* Additional variables for modular theming */
   --bg-primary: rgba(0, 0, 0, 0.7);
