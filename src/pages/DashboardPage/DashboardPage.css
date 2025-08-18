@@ -85,7 +85,7 @@
 .stat-card-wrapper {
   padding: 8px;
   height: 100%;
-  border: 5px dotted rgb(9, 219, 37);
+ 
 }
 
 .stat-card-wrapper .dashboard-stat-card {
@@ -95,7 +95,7 @@
 
 .dashboard-system-row {
   margin-top: 0px;
-  border: 5px dotted red;
+ 
 }
 
 /* Stat Card Variants - Light Theme */

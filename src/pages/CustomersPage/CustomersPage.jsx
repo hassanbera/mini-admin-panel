@@ -19,75 +19,8 @@ const CustomersPage = () => {
   const [editingCustomer, setEditingCustomer] = useState(null);
   const [viewMode, setViewMode] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [currentBreakpoint, setCurrentBreakpoint] = useState('desktop');
 
-  // Responsive breakpoint detection
-  useEffect(() => {
-    const updateBreakpoint = () => {
-      const width = window.innerWidth;
-      let breakpoint = 'desktop';
-      
-      if (width <= 480) {
-        breakpoint = 'verySmall';
-      } else if (width <= 575) {
-        breakpoint = 'mobile';
-      } else if (width <= 767) {
-        breakpoint = 'tablet';
-      } else if (width <= 991) {
-        breakpoint = 'tablet';
-      } else {
-        breakpoint = 'desktop';
-      }
-      
-      setCurrentBreakpoint(breakpoint);
-    };
-
-    const applyResponsiveStyles = () => {
-      const width = window.innerWidth;
-      const customersElement = document.querySelector('.customers-container');
-      
-      if (!customersElement) return;
-
-      // Remove all responsive classes
-      customersElement.classList.remove(
-        'customers-mobile', 
-        'customers-small-tablet', 
-        'customers-medium-tablet',
-        'customers-large-tablet',
-        'customers-extra-large',
-        'customers-very-small'
-      );
-
-      // Add appropriate class based on screen size
-      if (width <= 480) {
-        customersElement.classList.add('customers-very-small');
-      } else if (width <= 575) {
-        customersElement.classList.add('customers-mobile');
-      } else if (width <= 767) {
-        customersElement.classList.add('customers-small-tablet');
-      } else if (width <= 991) {
-        customersElement.classList.add('customers-medium-tablet');
-      } else if (width <= 1199) {
-        customersElement.classList.add('customers-large-tablet');
-      } else {
-        customersElement.classList.add('customers-extra-large');
-      }
-    };
-
-    updateBreakpoint();
-    applyResponsiveStyles();
-    
-    window.addEventListener('resize', updateBreakpoint);
-    window.addEventListener('resize', applyResponsiveStyles);
-
-    return () => {
-      window.removeEventListener('resize', updateBreakpoint);
-      window.removeEventListener('resize', applyResponsiveStyles);
-    };
-  }, []);
-
-  // Get responsive configurations - now handled via CSS
-  // Dynamic columns based on screen size
+  // Dynamic columns using Ant Design's built-in responsive features
   const getColumns = () => {
     const baseColumns = [
       {
@@ -95,48 +28,47 @@ const CustomersPage = () => {
         dataIndex: 'name',
         key: 'name',
         sorter: (a, b) => a.name.localeCompare(b.name),
-        ellipsis: currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall',
+        ellipsis: true,
       },
       {
         title: 'Email',
         dataIndex: 'email',
         key: 'email',
         sorter: (a, b) => a.email.localeCompare(b.email),
-        ellipsis: currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall',
-        responsive: currentBreakpoint === 'verySmall' ? ['sm'] : [],
+        ellipsis: true,
+        responsive: ['sm'],
       },
       {
         title: 'Telefon',
         dataIndex: 'phone',
         key: 'phone',
-        responsive: currentBreakpoint === 'verySmall' ? ['md'] : [],
+        responsive: ['md'],
       },
       {
         title: 'Adres',
         dataIndex: 'address',
         key: 'address',
         ellipsis: true,
-        width: currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall' ? 150 : 250,
-        responsive: currentBreakpoint === 'verySmall' ? ['lg'] : [],
+        responsive: ['lg'],
       },
       {
         title: 'İşlemler',
         key: 'actions',
-        width: currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall' ? 200 : 250,
-        fixed: currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall' ? 'right' : false,
+        className: 'actions-column',
+        width:300,
         render: (_, record) => (
           <Space 
             size="small" 
-            direction={currentBreakpoint === 'verySmall' ? 'vertical' : 'horizontal'}
-            style={currentBreakpoint === 'verySmall' ? { width: '100%' } : {}}
+            className="action-buttons-space"
           >
             <Button
-              type="default"
+              type="view"
               icon={<EyeOutlined />}
               size="small"
               onClick={() => handleView(record)}
+              className="action-button view-button"
             >
-              {currentBreakpoint === 'verySmall' ? '' : 'Görüntüle'}
+              <span className="button-text">Görüntüle</span>
             </Button>
             
             <RoleGuard 
@@ -145,13 +77,14 @@ const CustomersPage = () => {
               tooltipTitle="Düzenleme yetkisi sadece admin kullanıcıda bulunur."
             >
               <Button
-                type="primary"
+                type="edit"
                 icon={<EditOutlined />}
                 size="small"
                 onClick={() => handleEdit(record)}
                 disabled={!canUpdate()}
+                className="action-button edit-button"
               >
-                {currentBreakpoint === 'verySmall' ? '' : 'Düzenle'}
+                <span className="button-text">Düzenle</span>
               </Button>
             </RoleGuard>
             
@@ -161,14 +94,15 @@ const CustomersPage = () => {
               tooltipTitle="Silme yetkisi sadece admin kullanıcıda bulunur."
             >
               <Button
-                type="primary"
+                type="delete"
                 danger
                 icon={<DeleteOutlined />}
                 size="small"
                 onClick={() => handleDelete(record)}
                 disabled={!canDelete()}
+                className="action-button delete-button"
               >
-                {currentBreakpoint === 'verySmall' ? '' : 'Sil'}
+                <span className="button-text">Sil</span>
               </Button>
             </RoleGuard>
           </Space>
@@ -270,9 +204,9 @@ const CustomersPage = () => {
               tooltipTitle="Yeni müşteri ekleme yetkisi sadece admin kullanıcıda bulunur."
             >
               <Button
-                type="primary"
+                type="plus"
                 icon={<PlusOutlined />}
-                size={currentBreakpoint === 'verySmall' ? 'small' : 'default'}
+                className="add-customer-button"
                 onClick={() => {
                   if (!canCreate()) {
                     message.warning('Yeni müşteri ekleme yetkisi sadece admin kullanıcıda bulunur.');
@@ -284,7 +218,7 @@ const CustomersPage = () => {
                 }}
                 disabled={!canCreate()}
               >
-                {currentBreakpoint === 'verySmall' ? 'Yeni' : 'Yeni Müşteri'}
+                <span className="button-text">Yeni Müşteri</span>
               </Button>
             </RoleGuard>
           </div>
@@ -335,7 +269,7 @@ const CustomersPage = () => {
         footer={viewMode ? null : undefined}
         width={800}
         className="customers-modal"
-        centered={currentBreakpoint === 'mobile' || currentBreakpoint === 'verySmall'}
+        centered
       >
         <CustomerForm
           customer={editingCustomer}

@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: var(--gradient-bg);
   transition: all 0.3s ease;
+  padding: 24px;
 }
 
 .customers-card {
@@ -11,6 +12,8 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .customers-card:hover {
@@ -47,23 +50,22 @@
   text-shadow: 0 1px 2px var(--shadow);
 }
 
-
-
 .action-button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.action-button-container .ant-btn-primary {
+.action-button-container .ant-btn-plus {
   background: var(--primary-gradient);
   border: none;
   box-shadow: 0 4px 12px var(--shadow);
+  color: var(--button-text-color);
   transition: all 0.3s ease;
 }
 
-.action-button-container .ant-btn-primary:hover {
-  background: var(--primary-gradient);
+.action-button-container .ant-btn-plus:hover {
+  background: var(--primary-hover);
   filter: brightness(1.1);
   box-shadow: 0 6px 16px var(--shadow);
   transform: translateY(-1px);
@@ -74,22 +76,25 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background: #b91c1c;
   padding: 0 24px;
 }
 
 .search-input {
   max-width: 400px;
+  background: green;
+  width: 100%;
 }
 
 .search-input .ant-input-search {
   border-radius: 8px;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-accent);
+  background: blue;
+  border: 5px doted red;
   transition: all 0.3s ease;
 }
 
 .search-input .ant-input-search:hover {
-  border-color: var(--primary-color);
+  border-color: var(--primary-hover);
   box-shadow: 0 2px 8px var(--shadow);
 }
 
@@ -100,24 +105,23 @@
   border: 1px solid var(--border-color);
 }
 
-.customers-table .ant-table-thead > tr > th {
+.customers-table .ant-table-thead>tr>th {
   background: var(--secondary-background);
   color: var(--text-color);
   font-weight: 600;
   border-bottom: 2px solid var(--border-accent);
 }
 
-.customers-table .ant-table-tbody > tr {
+.customers-table .ant-table-tbody>tr {
   transition: all 0.3s ease;
 }
 
-.customers-table .ant-table-tbody > tr:hover {
+.customers-table .ant-table-tbody>tr:hover {
   background: rgba(var(--primary-color), 0.05) !important;
-  transform: translateY(-1px);
   box-shadow: 0 2px 8px var(--shadow);
 }
 
-.customers-table .ant-table-tbody > tr > td {
+.customers-table .ant-table-tbody>tr>td {
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -128,69 +132,126 @@
   transition: all 0.3s ease;
 }
 
-.customers-table .ant-btn-primary {
+.customers-table .ant-btn-view {
   background: var(--primary-gradient);
   border: none;
   box-shadow: 0 2px 8px var(--shadow);
+  color: var(--button-text-color);
 }
 
-.customers-table .ant-btn-primary:hover {
-  background: var(--primary-gradient);
+.customers-table .ant-btn-view:hover {
+  background: var(--primary-hover);
   filter: brightness(1.1);
   box-shadow: 0 4px 12px var(--shadow);
   transform: translateY(-1px);
 }
 
-.customers-table .ant-btn-default {
-  background: var(--bg-secondary);
+.customers-table .ant-btn-edit {
+  background: var(--primary-gradient);
   border: 1px solid var(--border-accent);
-  color: var(--primary-color);
+  color: var(--button-text-color);;
 }
 
-.customers-table .ant-btn-default:hover {
-  background: var(--bg-secondary);
+.customers-table .ant-btn-edit:hover {
+  background: var(--primary-hover);
   filter: brightness(0.95);
   border-color: var(--primary-color);
   transform: translateY(-1px);
 }
 
-.customers-table .ant-btn-dangerous {
+.customers-table .ant-btn-delete {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: var(--button-text-color);
   border: none;
   box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 }
 
-.customers-table .ant-btn-dangerous:hover {
+.customers-table .ant-btn-delete:hover {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
   transform: translateY(-1px);
 }
+
+/* Action buttons styling */
+.actions-column {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+.action-buttons-space {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.add-customer-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Modal styling */
+.customers-modal {
+  border-radius: 12px;
+}
+
+.customers-modal .ant-modal-content {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.customers-modal .ant-modal-header {
+  background: var(--secondary-background);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 12px 12px 0 0;
+}
+
+.customers-modal .ant-modal-title {
+  color: var(--text-color);
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
   .customers-container {
     padding: 8px;
   }
-  
+
   .customer-page-container {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
     padding: 16px;
   }
-  
+
   .customer-page-title {
     font-size: 18px;
     margin-bottom: 4px;
   }
-  
-  .user-container {
-    font-size: 12px;
+
+  .header-section {
+    width: 100%;
   }
-  
+
   .action-button-container {
     justify-content: flex-start;
+    width: 100%;
+    margin-top: 8px;
   }
-  
+
+  .search-container {
+    padding: 0 16px;
+  }
+
   .search-input {
     max-width: 100%;
   }
@@ -199,9 +260,47 @@
     margin: 0;
     border-radius: 8px;
   }
-  
-  .search-container {
-    padding: 0 16px;
+
+  /* Hide button text on mobile, show only icons */
+  .button-text {
+    display: none;
+  }
+
+  .add-customer-button {
+    padding: 0 10px;
+  }
+
+  .add-customer-button::after {
+    content: 'Yeni';
+  }
+
+  /* Adjust actions column for mobile */
+  .actions-column {
+    min-width: 120px;
+  }
+
+  /* Make actions column buttons stack vertically */
+  .action-buttons-space {
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+  }
+
+  /* Adjust table for very small screens */
+  .customers-table .ant-table-thead>tr>th {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .customers-table .ant-table-tbody>tr>td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  /* Modal size for very small screens */
+  .customers-modal {
+    margin: 8px;
+    max-width: calc(100vw - 16px);
   }
 }
 
@@ -209,28 +308,56 @@
   .customers-container {
     padding: 12px;
   }
-  
+
   .customer-page-container {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
     padding: 20px;
   }
-  
+
   .customer-page-title {
     font-size: 20px;
   }
-  
+
+  .header-section {
+    width: 100%;
+  }
+
   .action-button-container {
     justify-content: flex-start;
+    width: 100%;
+    margin-top: 8px;
   }
-  
+
   .search-input {
     max-width: 100%;
   }
-  
+
   .search-container {
     padding: 0 20px;
+  }
+
+  /* Hide button text on small mobile, show only icons */
+  .button-text {
+    display: none;
+  }
+  
+  /* Adjust table for small screens */
+  .customers-table .ant-table-thead>tr>th {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+
+  .customers-table .ant-table-tbody>tr>td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+
+  /* Modal size for small screens */
+  .customers-modal {
+    margin: 16px;
+    max-width: calc(100vw - 32px);
   }
 }
 
@@ -238,19 +365,41 @@
   .customers-container {
     padding: 16px;
   }
-  
+
   .customer-page-container {
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
+    padding: 20px;
   }
-  
+
   .customer-page-title {
     font-size: 22px;
   }
-  
+
   .search-input {
     max-width: 350px;
+  }
+
+  /* Compact button text for tablets */
+  .button-text {
+    font-size: 12px;
+  }
+
+  /* Adjust table for medium screens */
+  .customers-table .ant-table-thead>tr>th {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .customers-table .ant-table-tbody>tr>td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  /* Modal size for tablets */
+  .customers-modal {
+    max-width: 540px;
   }
 }
 
@@ -258,13 +407,18 @@
   .customers-container {
     padding: 20px;
   }
-  
+
   .customer-page-title {
     font-size: 22px;
   }
-  
+
   .search-input {
     max-width: 350px;
+  }
+
+  /* Modal size for large tablets */
+  .customers-modal {
+    max-width: 720px;
   }
 }
 
@@ -272,76 +426,16 @@
   .customers-container {
     padding: 24px;
   }
-  
+
   .customer-page-title {
     font-size: 24px;
   }
-  
+
   .search-input {
     max-width: 400px;
   }
-}
 
-/* Modal responsive styles */
-.customers-modal {
-  border-radius: 12px;
-}
-
-.customers-modal .ant-modal-content {
-  background: var(--card-background);
-  border: 1px solid var(--border-color);
-}
-
-.customers-modal .ant-modal-header {
-  background: var(--secondary-background);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.customers-modal .ant-modal-title {
-  color: var(--text-color);
-}
-
-@media (max-width: 575px) {
-  .customers-modal {
-    margin: 8px;
-    max-width: calc(100vw - 16px);
-  }
-  
-  .customers-table .ant-table-thead > tr > th {
-    padding: 8px 4px;
-    font-size: 12px;
-  }
-  
-  .customers-table .ant-table-tbody > tr > td {
-    padding: 8px 4px;
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 576px) and (max-width: 767px) {
-  .customers-modal {
-    margin: 16px;
-    max-width: calc(100vw - 32px);
-  }
-  
-  .customers-table .ant-table-thead > tr > th {
-    padding: 12px 8px;
-    font-size: 13px;
-  }
-  
-  .customers-table .ant-table-tbody > tr > td {
-    padding: 12px 8px;
-    font-size: 13px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .customers-modal {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
+  /* Modal size for desktops */
   .customers-modal {
     max-width: 800px;
   }

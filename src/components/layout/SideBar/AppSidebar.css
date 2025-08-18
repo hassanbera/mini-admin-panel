@@ -123,8 +123,8 @@
 /* Menu items using theme variables */
 .sidebar-menu .ant-menu-item {
   color: var(--text-secondary);
+  background-color: var(--primary-gradient);
   border-radius: 12px;
-  margin: 6px 6px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -136,9 +136,8 @@
   background: var(--bg-secondary);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  transform: translateX(6px);
   border: 1px solid var(--primary-color);
-  box-shadow: 0 8px 25px var(--primary-color);
+  box-shadow: 0 4px 12px var(--primary-color);
 }
 
 .sidebar-menu .ant-menu-item-selected {
@@ -148,7 +147,7 @@
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid var(--primary-color);
   box-shadow: 
-    0 8px 25px var(--primary-color),
+    0 4px 12px var(--primary-color),
     inset 0 1px 0 var(--border-color);
 }
 
@@ -225,8 +224,8 @@
 /* Sidebar toggle button styling - mobile only */
 .sidebar-toggle-btn {
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: 80px;
+  left: 32px;
   z-index: 1001;
   background: var(--bg-secondary) !important;
   border: 1px solid var(--border-color) !important;
@@ -255,12 +254,12 @@
 /* Mobile-specific button positioning */
 @media (max-width: 991px) {
   .sidebar-toggle-btn {
-    top: 16px;
+    top: 72px;
     left: 16px;
   }
   
   /* Adjust position when sidebar is open */
   .sidebar-toggle-btn:not(.sidebar-collapsed) {
-    left: 266px; /* 250px sidebar width + 16px margin */
+    left: 216px; /* 250px sidebar width + 16px margin */
   }
 }

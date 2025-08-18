@@ -121,9 +121,10 @@ const OrdersPage = () => {
           </Tag>
           {canCreate() && (
             <Button 
-              type="primary" 
+              type="plus" 
               icon={<PlusOutlined />} 
               onClick={() => openModal()}
+              className="new-order-button"
             >
               Yeni Sipariş
             </Button>

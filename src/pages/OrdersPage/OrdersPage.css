@@ -56,18 +56,34 @@
 }
 
 /* Orders action button styling */
-.orders-action-button .ant-btn-primary {
-  background: var(--primary-gradient);
+.orders-action-button .ant-btn-plus {
+  background: var(--primary-color);
   border: none;
   box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
 }
 
-.orders-action-button .ant-btn-primary:hover {
+.orders-action-button .ant-btn-plus:hover {
   background: var(--primary-gradient);
   filter: brightness(1.1);
   box-shadow: 0 6px 16px var(--shadow);
   transform: translateY(-1px);
+}
+
+/* New Order Button Specific Styling */
+.new-order-button {
+  background: var(--primary-gradient);
+  border: none;
+  box-shadow: 0 4px 12px var(--shadow);
+  color: var(--button-text-color);
+  transition: all 0.3s ease;
+}
+
+.new-order-button:hover {
+ background: var(--primary-hover);
+ filter: brightness(1.1);
+ box-shadow: 0 6px 16px var(--shadow);
+ transform: translateY(-1px);
 }
 
 /* Orders table styling */
@@ -96,7 +112,7 @@
 }
 
 .orders-table-container .ant-table-tbody > tr > td {
-  color: var(--text-secondary);
+  color: var(--text-dolor);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -106,13 +122,13 @@
   transition: all 0.3s ease;
 }
 
-.orders-table-container .ant-btn-primary {
+.orders-table-container .ant-btn-plus {
   background: var(--primary-gradient);
   border: none;
   box-shadow: 0 2px 8px var(--shadow);
 }
 
-.orders-table-container .ant-btn-primary:hover {
+.orders-table-container .ant-btn-plus:hover {
   background: var(--primary-gradient);
   filter: brightness(1.1);
   box-shadow: 0 4px 12px var(--shadow);
