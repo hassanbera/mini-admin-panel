@@ -76,13 +76,11 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: #b91c1c;
   padding: 0 24px;
 }
 
 .search-input {
   max-width: 400px;
-  background: green;
   width: 100%;
 }
 
